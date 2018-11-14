@@ -1,4 +1,4 @@
-## About
+# About <!-- omit in toc -->
 This is a demo Kubernetes operator (weather service) using the [operator-sdk](https://github.com/operator-framework/operator-sdk). Based on custom resource events (or every 60s, hardcoded resync interval), this controller will query the current temperature for cities.
 
 ```bash
@@ -7,6 +7,19 @@ Hamburg,DE    8.36    Celsius
 Leipzig       9       Celsius
 New York,US   36.18   Fahrenheit
 ```
+
+**Table of Content**
+
+- [Installation](#installation)
+  - [Requirements (build and run)](#requirements-build-and-run)
+  - [Obtain a TOKEN (API key) from OpenWeatherMap](#obtain-a-token-api-key-from-openweathermap)
+- [Usage](#usage)
+  - [How to Run the Operator Demo in a Kubernetes Cluster](#how-to-run-the-operator-demo-in-a-kubernetes-cluster)
+  - [Example: Add your city](#example-add-your-city)
+  - [Tear Down](#tear-down)
+  - [How to Run the Operator outside the Kubernetes Cluster](#how-to-run-the-operator-outside-the-kubernetes-cluster)
+
+# Installation 
 
 ## Requirements (build and run)
 
@@ -29,7 +42,8 @@ Requirements for **building** the operator and if you want to run the operator o
 
 To query the OpenWeatherMap API we need a token. [Sign up](https://home.openweathermap.org/users/sign_up) for the service (free for our purposes as of writing this README) and then [create a custom token (API key)](https://home.openweathermap.org/api_keys) to be used by the operator.
 
-## How to run the operator demo in a Kubernetes cluster
+# Usage
+## How to Run the Operator Demo in a Kubernetes Cluster
 
 Clone the repo:
 
@@ -77,7 +91,7 @@ Leipzig       9       Celsius
 New York,US   36.18   Fahrenheit
 ```
 
-## Add your city
+## Example: Add your city
 
 Adding your city to the weather operator is as easy as creating a custom resource:
 
@@ -98,7 +112,7 @@ Save this as a file (`yourcity.yaml`) and then submit to Kubernetes:
 kubectl -n weather create -f yourcity.yaml
 ```
 
-## Tear down
+## Tear Down
 
 This will delete all objects (incl. RBAC) and the namespace we created earlier.
 
@@ -107,7 +121,7 @@ kubectl -n weather delete -R -f deploy
 kubectl delete ns weather
 ```
 
-## How to run the operator outside the Kubernetes cluster
+## How to Run the Operator outside the Kubernetes Cluster
 
 Make sure you have installed the required software listed above (see "Requirements for building the operator"). Create a file containing the OpenWeatherMap API key. The commands assume you've cloned and changed into the repository as described above.
 
