@@ -98,6 +98,15 @@ Save this as a file (`yourcity.yaml`) and then submit to Kubernetes:
 kubectl -n weather create -f yourcity.yaml
 ```
 
+## Tear down
+
+This will delete all objects (incl. RBAC) and the namespace we created earlier.
+
+```bash
+kubectl -n weather delete -R -f deploy
+kubectl delete ns weather
+```
+
 ## How to run the operator outside the Kubernetes cluster
 
 Make sure you have installed the required software listed above (see "Requirements for building the operator"). Create a file containing the OpenWeatherMap API key. The commands assume you've cloned and changed into the repository as described above.
