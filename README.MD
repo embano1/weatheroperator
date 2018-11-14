@@ -37,11 +37,6 @@ Clone the repo:
 git clone https://github.com/embano1/weatheroperator && cd weatheroperator
 ```
 
-Create the token to query the OpenWeatherMap API be used by the operator:
-
-```bash
-```
-
 Prepare the Kubernetes namespace and register the custom resource definition (CRD) for the weather service:
 
 ```bash
@@ -65,16 +60,21 @@ Deploy the operator (incl. RBAC rules):
 kubectl -n weather create -f deploy/
 ```
 
+Deploy the example locations (custom resources):
+
+```bash
+kubectl -n weather create -f deploy/crds/cities/
+```
+
 Open another terminal to watch the operator in action:
 
 ```bash
 watch -n 1 "kubectl -n weather get ws -o=custom-columns=CITY:.spec.city,TEMP:.status.temperature,METRIC:.spec.unit"
-```
 
-Switch back to another terminal and deploy the example locations (custom resources):
-
-```bash
-kubectl -n weather create -f deploy/crds/cities/
+CITY          TEMP    METRIC
+Hamburg,DE    8.36    Celsius
+Leipzig       9       Celsius
+New York,US   36.18   Fahrenheit
 ```
 
 ## Add your city
@@ -135,14 +135,14 @@ operator-sdk up local --operator-flags "-c app.id"
 2018/11/14 10:51:10 Starting the Cmd.
 ```
 
+Deploy the example locations (custom resources):
+
+```bash
+kubectl -n weather create -f deploy/crds/cities/
+```
+
 Open another terminal to watch the operator in action:
 
 ```bash
 watch -n 1 "kubectl -n weather get ws -o=custom-columns=CITY:.spec.city,TEMP:.status.temperature,METRIC:.spec.unit"
-```
-
-Switch back to another terminal and deploy the example locations (custom resources):
-
-```bash
-kubectl -n weather create -f deploy/crds/cities/
 ```
