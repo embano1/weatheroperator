@@ -1,0 +1,11 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: weatherservice
+subjects:
+- kind: ServiceAccount
+  name: weatherservice
+roleRef:
+  kind: Role
+  name: weatherservice
+  apiGroup: rbac.authorization.k8s.io

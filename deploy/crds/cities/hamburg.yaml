@@ -1,0 +1,8 @@
+apiVersion: weatherservice.vmware.com/v1alpha1
+kind: WeatherService
+metadata:
+  name: hamburg
+spec:
+  # Add fields here
+  city: "Hamburg,DE"
+  unit: "Celsius"

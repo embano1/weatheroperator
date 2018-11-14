@@ -1,0 +1,8 @@
+apiVersion: weatherservice.vmware.com/v1alpha1
+kind: WeatherService
+metadata:
+  name: newyork
+spec:
+  # Add fields here
+  city: "New York,US"
+  unit: "Fahrenheit"
